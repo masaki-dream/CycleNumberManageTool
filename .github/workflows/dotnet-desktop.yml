@@ -19,6 +19,9 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
+    - name: Show files in current directory
+      run: dir
+
     - name: Restore
       run: dotnet restore ./CycleNumberManageTool.sln
 

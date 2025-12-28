@@ -20,10 +20,10 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore
-      run: dotnet restore CycleNumberManageTool.sln
+      run: dotnet restore ./CycleNumberManageTool.sln
 
     - name: Build
-      run: dotnet build CycleNumberManageTool.sln --configuration Release --no-restore
+      run: dotnet build ./CycleNumberManageTool.sln --configuration Release --no-restore
 
     - name: Test
-      run: dotnet test CycleNumberManageTool.sln --no-build
+      run: dotnet test ./CycleNumberManageTool.sln --no-build

@@ -20,8 +20,8 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore CycleNumberManageTool.sln
+      run: dotnet restore ./CycleNumberManageTool.sln
 
     - name: Build
-      run: dotnet build CycleNumberManageTool.sln --no-restore --configuration Release
+      run: dotnet build ./CycleNumberManageTool.sln --no-restore --configuration Release
 

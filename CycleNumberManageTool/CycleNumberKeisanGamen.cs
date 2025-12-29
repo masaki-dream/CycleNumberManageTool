@@ -1,7 +1,3 @@
-using System.Data;
-using System.Xml;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-
 namespace CycleNumberManageTool
 {
     public partial class CycleNumberKeisanGamen : Form
@@ -84,7 +80,7 @@ namespace CycleNumberManageTool
                     cycleNumber = Convert.ToInt32(InputCycleNumberText.Text);
 
                     // 駐輪場を利用し始めた時間「startTime」を代入
-                     startTime = (DateTime)result[1];
+                    startTime = (DateTime)result[1];
 
                     // 出勤ボタンをtrue
                     isCheckStartingButtonFlg = true;
@@ -457,7 +453,7 @@ namespace CycleNumberManageTool
             try
             {
                 // 確定ボタンが押さているかつ、確定ボタンが押下されていないか確認
-                if (isCheckExcecuteFlg       == true && 
+                if (isCheckExcecuteFlg == true &&
                     isCheckStartingButtonFlg != true)
                 {
                     // 駐輪番号を格納
@@ -529,7 +525,7 @@ namespace CycleNumberManageTool
             try
             {
                 // 確定ボタンを押して駐輪番号が格納されている場合
-                if (isCheckExcecuteFlg        == true && 
+                if (isCheckExcecuteFlg == true &&
                     InputCycleNumberText.Text == cycleNumber.ToString())
                 {
                     // 出勤ボタンをtrue
@@ -586,7 +582,7 @@ namespace CycleNumberManageTool
 
                 }
                 // 確定ボタンを押しているかつ、格納されている駐輪番号とテキストに表示されている駐輪番号が一致しない場合
-                else if (isCheckExcecuteFlg       == true && 
+                else if (isCheckExcecuteFlg == true &&
                         InputCycleNumberText.Text != cycleNumber.ToString())
                 {
                     MessageBox.Show($"元々格納した駐輪番号に正しくするか、駐輪番号を変更してください。",

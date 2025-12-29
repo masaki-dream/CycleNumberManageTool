@@ -10,41 +10,41 @@ namespace CycleNumberManageTool
         {
             InitializeComponent();
 
-            // ã‚¿ã‚¤ãƒˆãƒ«ãƒãƒ¼ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’è¨­å®š
-            this.Text = "é§è¼ªç”»é¢";
+            // ƒ^ƒCƒgƒ‹ƒo[‚ÌƒeƒLƒXƒg‚ğİ’è
+            this.Text = "’“—Ö‰æ–Ê";
         }
 
-        // --------- å®šæ•°ã®å®£è¨€ --------------
+        // --------- ’è”‚ÌéŒ¾ --------------
 
-        // é§è¼ªå ´ã®å°»ç•ªå·(å¤‰ã‚ã‚‹ã‹ã‚‚ã—ã‚Œãªã„ã®ã§å¤‰æ•°ã«æ ¼ç´)
+        // ’“—Öê‚ÌK”Ô†(•Ï‚í‚é‚©‚à‚µ‚ê‚È‚¢‚Ì‚Å•Ï”‚ÉŠi”[)
         private const int lastCycleNumber = 383;
-        // é§è¼ªå ´æ–™é‡‘ã®æ™‚é–“é–“éš”(14æ™‚é–“æ¯ã«100å††)
+        // ’“—Öê—¿‹à‚ÌŠÔŠÔŠu(14ŠÔ–ˆ‚É100‰~)
         private const int hoursInterval = 14;
-        // é§è¼ªå ´ã®è¿½åŠ é‡‘é¡(100å††)
+        // ’“—Öê‚Ì’Ç‰Á‹àŠz(100‰~)
         private const int paymentIncrement = 100;
 
         // -------------------------------------
 
-        // ------- ä»¥é™ã¯è¨ˆç®—å¼ã§ä½¿ç”¨ ----------
-        // ç¢ºå®šãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚ã«True
+        // ------- ˆÈ~‚ÍŒvZ®‚Åg—p ----------
+        // Šm’èƒ{ƒ^ƒ“‰Ÿ‰º‚ÉTrue
         private Boolean isCheckExcecuteFlg = false;
-        // å¤‰æ›´ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚ã«True
+        // •ÏXƒ{ƒ^ƒ“‰Ÿ‰º‚ÉTrue
         private Boolean isCheckHenkoFlg = false;
-        // å‡ºå‹¤ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚ã«True
+        // o‹Îƒ{ƒ^ƒ“‰Ÿ‰º‚ÉTrue
         private Boolean isCheckStartingButtonFlg = false;
-        // é€€å‹¤ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚ã«True
+        // ‘Ş‹Îƒ{ƒ^ƒ“‰Ÿ‰º‚ÉTrue
         private Boolean isCheckFinishingButtonFlg = false;
-        // DateTimeå‹ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰
+        // DateTimeŒ^‚ÌƒtƒB[ƒ‹ƒh
         private DateTime startTime;
-        // é§è¼ªç•ªå·
+        // ’“—Ö”Ô†
         private int cycleNumber = 0;
-        // é§è¼ªå ´é‡‘é¡ã®åˆæœŸé‡‘é¡
+        // ’“—Öê‹àŠz‚Ì‰Šú‹àŠz
         private int currentPaymentMoney = 100;
 
         // ---------------------------------------
 
         /// <summary>
-        /// ãƒ¡ã‚¤ãƒ³ç”»é¢ãƒ­ãƒ¼ãƒ‰æ™‚å‡¦ç†
+        /// ƒƒCƒ“‰æ–Êƒ[ƒhˆ—
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -52,10 +52,10 @@ namespace CycleNumberManageTool
         {
             try
             {
-                // ç”»é¢ãƒ­ãƒ¼ãƒ‰æ™‚ã®å‡¦ç† 
+                // ‰æ–Êƒ[ƒh‚Ìˆ— 
                 SetLoad();
 
-                // 1æ—¥2å›ä»¥ä¸Šé§è¼ªå ´ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€æœ€æ–°ã®é§è¼ªå ´ã«æ­¢ã‚ãŸæ™‚é–“ã‚’å–å¾—
+                // 1“ú2‰ñˆÈã’“—Öê‚ğg—p‚·‚éê‡‚ÍAÅV‚Ì’“—Öê‚É~‚ß‚½ŠÔ‚ğæ“¾
                 String cmdText = @"
                     SELECT TOP 1
                         CycleNumber,
@@ -68,221 +68,221 @@ namespace CycleNumberManageTool
                     ORDER BY CheckInTime DESC;
                 ";
 
-                // ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ä½œæˆ
+                // ƒCƒ“ƒXƒ^ƒ“ƒXì¬
                 Common commonInstance = new Common();
 
-                // åˆ¤å®šç”¨å¤‰æ•°
+                // ”»’è—p•Ï”
                 object[] result = commonInstance.IsSelectResult(cmdText);
 
-                // æœ¬æ—¥ã€é§è¼ªç•ªå·ã‚’æ ¼ç´ã—ãŸå ´åˆ(é€€å‹¤ãƒœã‚¿ãƒ³æŠ¼ä¸‹ã—ãŸå ´åˆã¯false)
+                // –{“úA’“—Ö”Ô†‚ğŠi”[‚µ‚½ê‡(‘Ş‹Îƒ{ƒ^ƒ“‰Ÿ‰º‚µ‚½ê‡‚Ífalse)
                 if (result != null && result[0] != null && result[2] == null)
                 {
-                    // é§è¼ªç•ªå·ã‚’ãƒ†ã‚­ã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹ã«æ ¼ç´
+                    // ’“—Ö”Ô†‚ğƒeƒLƒXƒgƒ{ƒbƒNƒX‚ÉŠi”[
                     InputCycleNumberText.Text = result[0].ToString();
 
-                    // é§è¼ªç•ªå·ã«DBã‹ã‚‰ã®é§è¼ªç•ªå·ã‚’æ ¼ç´
+                    // ’“—Ö”Ô†‚ÉDB‚©‚ç‚Ì’“—Ö”Ô†‚ğŠi”[
                     cycleNumber = Convert.ToInt32(InputCycleNumberText.Text);
 
-                    // é§è¼ªå ´ã‚’åˆ©ç”¨ã—å§‹ã‚ãŸæ™‚é–“ã€ŒstartTimeã€ã‚’ä»£å…¥
+                    // ’“—Öê‚ğ—˜—p‚µn‚ß‚½ŠÔustartTimev‚ğ‘ã“ü
                      startTime = (DateTime)result[1];
 
-                    // å‡ºå‹¤ãƒœã‚¿ãƒ³ã‚’true
+                    // o‹Îƒ{ƒ^ƒ“‚ğtrue
                     isCheckStartingButtonFlg = true;
 
-                    // é€€å‹¤ãƒœã‚¿ãƒ³ã‚’false
+                    // ‘Ş‹Îƒ{ƒ^ƒ“‚ğfalse
                     isCheckFinishingButtonFlg = false;
 
-                    // ç¢ºå®šãƒœã‚¿ãƒ³ã‚’éæ´»æ€§åŒ–
+                    // Šm’èƒ{ƒ^ƒ“‚ğ”ñŠˆ«‰»
                     ExecuteButton.Enabled = false;
 
-                    // å‡ºå‹¤ãƒœã‚¿ãƒ³æŠ¼ä¸‹ã—ãŸæ™‚ã®ãƒ¡ã‚½ãƒƒãƒ‰
+                    // o‹Îƒ{ƒ^ƒ“‰Ÿ‰º‚µ‚½‚Ìƒƒ\ƒbƒh
                     SetWorkButton();
 
                 }
             }
             catch (Exception ex)
             {
-                // ãƒ¦ãƒ¼ã‚¶ãƒ¼å‘ã‘ã®ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤º
-                MessageBox.Show("ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ\nã‚¨ãƒ©ãƒ¼å†…å®¹:" + ex.Message,
-                    "ã‚¨ãƒ©ãƒ¼", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // ƒ†[ƒU[Œü‚¯‚ÌƒGƒ‰[ƒƒbƒZ[ƒW‚ğ•\¦
+                MessageBox.Show("ƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½\nƒGƒ‰[“à—e:" + ex.Message,
+                    "ƒGƒ‰[", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
         /// <summary>
-        /// ç”»é¢ãƒ­ãƒ¼ãƒ‰æ™‚ã®å‡¦ç†
+        /// ‰æ–Êƒ[ƒh‚Ìˆ—
         /// </summary>
         private void SetLoad()
         {
-            // æ™‚é–“ã«å¿œã˜ã¦ãƒ†ã‚­ã‚¹ãƒˆãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å¤‰æ›´ã™ã‚‹(åˆå‰â‡’ãŠã¯ã‚ˆã†ãªã©)
+            // ŠÔ‚É‰‚¶‚ÄƒeƒLƒXƒgƒƒbƒZ[ƒW‚ğ•ÏX‚·‚é(Œß‘OË‚¨‚Í‚æ‚¤‚È‚Ç)
             SetTimeTextChange();
-            // ç¾åœ¨æ™‚åˆ»ã‚’ãƒ†ã‚­ã‚¹ãƒˆã«è¡¨ç¤ºã™ã‚‹
+            // Œ»İ‚ğƒeƒLƒXƒg‚É•\¦‚·‚é
             SetDateTime();
-            // å‡ºå‹¤çŠ¶æ³ã‚’ãƒ©ãƒ™ãƒ«ã«è¡¨ç¤ºã™ã‚‹
+            // o‹Îó‹µ‚ğƒ‰ƒxƒ‹‚É•\¦‚·‚é
             SetWorkIsNow();
-            // 1åˆ†ã”ã¨ã«ç¹°ã‚Šè¿”ã—å®Ÿè¡Œã™ã‚‹(ç¾åœ¨æ™‚åˆ»ã«ã‚ˆã£ã¦å‡¦ç†ãŒå­˜åœ¨ã™ã‚‹ç‚º)
+            // 1•ª‚²‚Æ‚ÉŒJ‚è•Ô‚µÀs‚·‚é(Œ»İ‚É‚æ‚Á‚Äˆ—‚ª‘¶İ‚·‚éˆ×)
             SetReLoadOneMinute();
-            // ã‚¤ãƒ™ãƒ³ãƒˆãƒãƒ³ãƒ‰ãƒ«ã®è¿½åŠ å‡¦ç†
+            // ƒCƒxƒ“ƒgƒnƒ“ƒhƒ‹‚Ì’Ç‰Áˆ—
             SetAddEventHandler();
         }
 
         /// <summary>
-        /// ã‚¤ãƒ™ãƒ³ãƒˆã‚’è¿½åŠ ã™ã‚‹ã¨ãã®å‡¦ç†
+        /// ƒCƒxƒ“ƒg‚ğ’Ç‰Á‚·‚é‚Æ‚«‚Ìˆ—
         /// </summary>
         private void SetAddEventHandler()
         {
-            // ã‚¤ãƒ™ãƒ³ãƒˆãƒãƒ³ãƒ‰ãƒ©ãƒ¼ã®ç™»éŒ²(ãƒ†ã‚­ã‚¹ãƒˆã®è¿½åŠ )
+            // ƒCƒxƒ“ƒgƒnƒ“ƒhƒ‰[‚Ì“o˜^(ƒeƒLƒXƒg‚Ì’Ç‰Á)
             InputCycleNumberText.GotFocus += TextBox_GotFocus;
             InputCycleNumberText.LostFocus += TextBox_LostFocus;
-            // ãƒ•ã‚©ãƒ¼ãƒ ã«TextBoxã‚’è¿½åŠ 
+            // ƒtƒH[ƒ€‚ÉTextBox‚ğ’Ç‰Á
             Controls.Add(InputCycleNumberText);
         }
 
         /// <summary>
-        /// æ™‚é–“ã«å¿œã˜ã¦ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å¤‰æ›´ã™ã‚‹(åˆå‰â‡’ãŠã¯ã‚ˆã†ãªã©)
+        /// ŠÔ‚É‰‚¶‚ÄƒƒbƒZ[ƒW‚ğ•ÏX‚·‚é(Œß‘OË‚¨‚Í‚æ‚¤‚È‚Ç)
         /// </summary>
         private void SetTimeTextChange()
         {
-            // ä»Šã®æ™‚é–“ã‚’å–å¾—
+            // ¡‚ÌŠÔ‚ğæ“¾
             DateTime currentTime = DateTime.Now;
-            // ç¾åœ¨æ™‚åˆ»ãŒ5:00 ï½ 11:00ã®å ´åˆ
+            // Œ»İ‚ª5:00 ` 11:00‚Ìê‡
             if (currentTime.Hour >= 5 && currentTime.Hour < 12)
             {
-                CurrentStateText.Text = "ãŠã¯ã‚ˆã†ã”ã–ã„ã¾ã™ã€‚";
+                CurrentStateText.Text = "‚¨‚Í‚æ‚¤‚²‚´‚¢‚Ü‚·B";
             }
-            // ç¾åœ¨æ™‚åˆ»ãŒ12:00 ï½ 15:00ã®å ´åˆ
+            // Œ»İ‚ª12:00 ` 15:00‚Ìê‡
             else if (currentTime.Hour <= 15)
             {
-                CurrentStateText.Text = "ã‚‚ã†ãŠæ˜¼ã§ã™ã­ã€‚";
+                CurrentStateText.Text = "‚à‚¤‚¨’‹‚Å‚·‚ËB";
             }
-            // ç¾åœ¨æ™‚åˆ»ãŒ16:00 ï½ 17:00ã®å ´åˆ
+            // Œ»İ‚ª16:00 ` 17:00‚Ìê‡
             else if (currentTime.Hour <= 17)
             {
-                CurrentStateText.Text = "ã‚‚ã†å¤•æ–¹ã§ã™ã­ã€‚";
+                CurrentStateText.Text = "‚à‚¤—[•û‚Å‚·‚ËB";
             }
-            // ãã‚Œä»¥å¤–ã®å‡¦ç†
+            // ‚»‚êˆÈŠO‚Ìˆ—
             else
             {
-                CurrentStateText.Text = "å¤œã¾ã§ãŠç–²ã‚Œæ§˜ã§ã™ã€‚";
+                CurrentStateText.Text = "–é‚Ü‚Å‚¨”æ‚ê—l‚Å‚·B";
             }
 
-            // ãƒ†ã‚­ã‚¹ãƒˆã‚’ä¿®æ­£ä¸å¯
+            // ƒeƒLƒXƒg‚ğC³•s‰Â
             CurrentStateText.Enabled = false;
 
-            // æ–‡å­—ã‚’æ›¸ãæ›ãˆã‚‰ã‚Œãªã„ã‚ˆã†ã«ã™ã‚‹
+            // •¶š‚ğ‘‚«Š·‚¦‚ç‚ê‚È‚¢‚æ‚¤‚É‚·‚é
             CurrentTimeText.Enabled = false;
         }
 
         /// <summary>
-        /// æ™‚é–“ã«å¿œã˜ã¦ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å¤‰æ›´ã™ã‚‹(åˆå‰â‡’ãŠã¯ã‚ˆã†ãªã©)
+        /// ŠÔ‚É‰‚¶‚ÄƒƒbƒZ[ƒW‚ğ•ÏX‚·‚é(Œß‘OË‚¨‚Í‚æ‚¤‚È‚Ç)
         /// </summary>
         private void SetDateTime()
         {
-            // ä»Šã®æ™‚é–“ã‚’å–å¾—
+            // ¡‚ÌŠÔ‚ğæ“¾
             DateTime currentTime = DateTime.Now;
-            // åˆ†ã®æ•´å½¢(12:5â‡’12:50)
+            // •ª‚Ì®Œ`(12:5Ë12:50)
             if (currentTime.Minute == 0)
             {
                 CurrentTimeText.Text =
-                    currentTime.Hour + "æ™‚ " + currentTime.Minute + "0åˆ† ";
+                    currentTime.Hour + " " + currentTime.Minute + "0•ª ";
             }
-            // åˆ†ã®ä¿®æ­£(12:5â‡’12:05)
+            // •ª‚ÌC³(12:5Ë12:05)
             else if (currentTime.Minute < 10)
             {
                 CurrentTimeText.Text =
-                    currentTime.Hour + "æ™‚ " + "0" + currentTime.Minute + "åˆ† ";
+                    currentTime.Hour + " " + "0" + currentTime.Minute + "•ª ";
             }
-            // ãã‚Œä»¥å¤–ã®å ´åˆ
+            // ‚»‚êˆÈŠO‚Ìê‡
             else
             {
                 CurrentTimeText.Text =
-                    currentTime.Hour + "æ™‚ " + currentTime.Minute + "åˆ† ";
+                    currentTime.Hour + " " + currentTime.Minute + "•ª ";
             }
 
         }
 
         /// <summary>
-        /// å‡ºå‹¤çŠ¶æ³ã‚’ãƒ©ãƒ™ãƒ«ã«è¡¨ç¤ºã™ã‚‹
+        /// o‹Îó‹µ‚ğƒ‰ƒxƒ‹‚É•\¦‚·‚é
         /// </summary>
         private void SetWorkIsNow()
         {
-            // ãƒ©ãƒ™ãƒ«ã®åˆæœŸè¡¨ç¤º
-            WorkNowLabel.Text = "é€€å‹¤æ¸ˆã§ã™ã€‚";
+            // ƒ‰ƒxƒ‹‚Ì‰Šú•\¦
+            WorkNowLabel.Text = "‘Ş‹ÎÏ‚Å‚·B";
 
-            // å‡ºå‹¤ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚Œã¦ã„ã‚‹å ´åˆ
+            // o‹Îƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚Ä‚¢‚éê‡
             if (isCheckStartingButtonFlg == true)
             {
-                WorkNowLabel.Text = "å‡ºå‹¤æ¸ˆã§ã™ã€‚";
+                WorkNowLabel.Text = "o‹ÎÏ‚Å‚·B";
             }
         }
 
         /// <summary>
-        /// 1åˆ†ã”ã¨ã«å‡¦ç†ã‚’ç¹°ã‚Šè¿”ã—å®Ÿè¡Œã™ã‚‹
+        /// 1•ª‚²‚Æ‚Éˆ—‚ğŒJ‚è•Ô‚µÀs‚·‚é
         /// </summary>
         private void SetReLoadOneMinute()
         {
 
-            // System.Timers.Timerå‹ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰
+            // System.Timers.TimerŒ^‚ÌƒtƒB[ƒ‹ƒh
             System.Windows.Forms.Timer checkTimer;
 
-            // Timerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œæˆ
+            // Timer‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğì¬
             checkTimer = new System.Windows.Forms.Timer();
 
-            // ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«ã‚’è¨­å®šï¼ˆ15ç§’ = 15000ãƒŸãƒªç§’ï¼‰
+            // ƒCƒ“ƒ^[ƒoƒ‹‚ğİ’èi15•b = 15000ƒ~ƒŠ•bj
             checkTimer.Interval = 15000;
 
-            // ã‚¿ã‚¤ãƒãƒ¼ã®Tickã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¨­å®š
+            // ƒ^ƒCƒ}[‚ÌTickƒCƒxƒ“ƒg‚ğˆ—‚·‚éƒƒ\ƒbƒh‚ğİ’è
             checkTimer.Tick += CheckTimer_Tick;
 
-            // ã‚¿ã‚¤ãƒãƒ¼ã‚’é–‹å§‹
+            // ƒ^ƒCƒ}[‚ğŠJn
             checkTimer.Start();
         }
 
         /// <summary>
-        /// ã‚¿ã‚¤ãƒãƒ¼ã®Tickã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†
+        /// ƒ^ƒCƒ}[‚ÌTickƒCƒxƒ“ƒgˆ—
         /// </summary>
         private void CheckTimer_Tick(object? sender, EventArgs? e)
         {
-            // 1åˆ†ã”ã¨ã«é§è¼ªé‡‘é¡ã‚’å†è¨ˆç®—ã™ã‚‹
+            // 1•ª‚²‚Æ‚É’“—Ö‹àŠz‚ğÄŒvZ‚·‚é
             SetRecalculationCurrentMoney();
         }
 
         /// <summary>
-        /// ã‚¿ã‚¤ãƒãƒ¼ã®Tickã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†
+        /// ƒ^ƒCƒ}[‚ÌTickƒCƒxƒ“ƒgˆ—
         /// </summary>
         private void SetRecalculationCurrentMoney()
         {
-            // å‡ºå‹¤ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚Œã¦ã„ãªã„ã¨å‡¦ç†ã§ããªã„ã‚ˆã†ã«ã—ãŸã„
+            // o‹Îƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚Ä‚¢‚È‚¢‚Æˆ—‚Å‚«‚È‚¢‚æ‚¤‚É‚µ‚½‚¢
             if (isCheckStartingButtonFlg == true)
             {
-                // ç¾åœ¨ã®æ™‚åˆ»ã‹ã‚‰å‡ºå‹¤ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸæ™‚é–“ã‚’å¼•ã„ãŸå¤‰æ•°
+                // Œ»İ‚Ì‚©‚ço‹Îƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½ŠÔ‚ğˆø‚¢‚½•Ï”
                 TimeSpan paymentTime = DateTime.Now - startTime;
 
-                // 14æ™‚é–“ã‚’çµŒéã—ã¦ã„ã‚‹ã‹ç¢ºèª
+                // 14ŠÔ‚ğŒo‰ß‚µ‚Ä‚¢‚é‚©Šm”F
                 if (paymentTime.Hours >= hoursInterval)
                 {
-                    // ä½•æ™‚é–“çµŒéã—ã¦ã„ã‚‹ã‹ç¢ºèª
+                    // ‰½ŠÔŒo‰ß‚µ‚Ä‚¢‚é‚©Šm”F
                     int recalc = (int)Math.Floor(paymentTime.TotalHours / hoursInterval);
 
-                    // 14æ™‚é–“ã”ã¨ã«100(å††)åŠ ç®—
+                    // 14ŠÔ‚²‚Æ‚É100(‰~)‰ÁZ
                     currentPaymentMoney += recalc * paymentIncrement;
                 }
 
                 CurrentMoneyLabel.Text =
-                     "ç¾åœ¨ã®é§è¼ªé‡‘é¡ã¯ " + currentPaymentMoney + " å††ã§ã™ã€‚";
+                     "Œ»İ‚Ì’“—Ö‹àŠz‚Í " + currentPaymentMoney + " ‰~‚Å‚·B";
             }
 
         }
 
 
         /// <summary>
-        /// ãƒ†ã‚­ã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹ã«ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ã•ã‚ŒãŸæ™‚ã®ãƒ—ãƒ¬ãƒ¼ã‚¹ãƒ›ãƒ«ãƒ€å‡¦ç†
+        /// ƒeƒLƒXƒgƒ{ƒbƒNƒX‚ÉƒtƒH[ƒJƒX‚³‚ê‚½‚ÌƒvƒŒ[ƒXƒzƒ‹ƒ_ˆ—
         /// </summary>
         private void TextBox_GotFocus(object? sender, EventArgs? e)
         {
 
-            // ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ã•ã‚ŒãŸã¨ãã«ãƒ—ãƒ¬ãƒ¼ã‚¹ãƒ›ãƒ«ãƒ€ãƒ¼ã‚’æ¶ˆã™
-            if (InputCycleNumberText.Text == "é§è¼ªç•ªå·ã‚’å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚")
+            // ƒtƒH[ƒJƒX‚³‚ê‚½‚Æ‚«‚ÉƒvƒŒ[ƒXƒzƒ‹ƒ_[‚ğÁ‚·
+            if (InputCycleNumberText.Text == "’“—Ö”Ô†‚ğ“ü—Í‚µ‚Ä‰º‚³‚¢B")
             {
                 InputCycleNumberText.Text = "";
                 InputCycleNumberText.ForeColor = System.Drawing.Color.Black;
@@ -292,20 +292,20 @@ namespace CycleNumberManageTool
         }
 
         /// <summary>
-        /// ãƒ†ã‚­ã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹ã®ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ãŒå¤–ã‚ŒãŸã¨ãã®å‡¦ç†
+        /// ƒeƒLƒXƒgƒ{ƒbƒNƒX‚ÌƒtƒH[ƒJƒX‚ªŠO‚ê‚½‚Æ‚«‚Ìˆ—
         /// </summary>
         private void TextBox_LostFocus(object? sender, EventArgs? e)
         {
-            // ãƒ•ã‚©ãƒ¼ã‚«ã‚¹ãŒå¤–ã‚ŒãŸã¨ãã«ãƒ—ãƒ¬ãƒ¼ã‚¹ãƒ›ãƒ«ãƒ€ãƒ¼ã‚’è¡¨ç¤º
+            // ƒtƒH[ƒJƒX‚ªŠO‚ê‚½‚Æ‚«‚ÉƒvƒŒ[ƒXƒzƒ‹ƒ_[‚ğ•\¦
             if (string.IsNullOrWhiteSpace(InputCycleNumberText.Text))
             {
-                InputCycleNumberText.Text = "é§è¼ªç•ªå·ã‚’å…¥åŠ›ã—ã¦ä¸‹ã•ã„ã€‚";
+                InputCycleNumberText.Text = "’“—Ö”Ô†‚ğ“ü—Í‚µ‚Ä‰º‚³‚¢B";
                 InputCycleNumberText.ForeColor = System.Drawing.Color.Gray;
             }
         }
 
         /// <summary>
-        /// ç¢ºå®šãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚å‡¦ç†
+        /// Šm’èƒ{ƒ^ƒ“‰Ÿ‰ºˆ—
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -313,16 +313,16 @@ namespace CycleNumberManageTool
         {
             try
             {
-                // é§è¼ªç•ªå·ã‚’æ ¼ç´
+                // ’“—Ö”Ô†‚ğŠi”[
                 String input = InputCycleNumberText.Text;
 
-                // é§è¼ªç•ªå·ã‚’æ ¼ç´ã™ã‚‹ã¾ã§ã®ä¸€é€£ã®æ“ä½œ
+                // ’“—Ö”Ô†‚ğŠi”[‚·‚é‚Ü‚Å‚Ìˆê˜A‚Ì‘€ì
                 SetCycleNumberKeisan(input, ref isCheckExcecuteFlg);
 
-                // æ­£ã—ãå¤‰æ›´å‡¦ç†ã§ããŸå ´åˆ
+                // ³‚µ‚­•ÏXˆ—‚Å‚«‚½ê‡
                 if (isCheckExcecuteFlg == true)
                 {
-                    MessageBox.Show(cycleNumber.ToString() + " ç•ªã«è‡ªè»¢è»Šã‚’é§è¼ªã—ã¾ã—ãŸã€‚", "é§è¼ªå®Œäº†",
+                    MessageBox.Show(cycleNumber.ToString() + " ”Ô‚É©“]Ô‚ğ’“—Ö‚µ‚Ü‚µ‚½B", "’“—ÖŠ®—¹",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 }
@@ -330,125 +330,125 @@ namespace CycleNumberManageTool
             }
             catch (Exception ex)
             {
-                // ãƒ¦ãƒ¼ã‚¶ãƒ¼å‘ã‘ã®ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤º
-                MessageBox.Show("ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ\nã‚¨ãƒ©ãƒ¼å†…å®¹:" + ex.Message,
-                    "ã‚¨ãƒ©ãƒ¼", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // ƒ†[ƒU[Œü‚¯‚ÌƒGƒ‰[ƒƒbƒZ[ƒW‚ğ•\¦
+                MessageBox.Show("ƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½\nƒGƒ‰[“à—e:" + ex.Message,
+                    "ƒGƒ‰[", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
         /// <summary>
-        /// é§è¼ªç•ªå·ã‚’æ ¼ç´ã™ã‚‹ã¾ã§ã®ä¸€é€£ã®æ“ä½œ
+        /// ’“—Ö”Ô†‚ğŠi”[‚·‚é‚Ü‚Å‚Ìˆê˜A‚Ì‘€ì
         /// </summary>
         private void SetCycleNumberKeisan(String input, ref Boolean isBooleanFlg)
         {
-            // é§è¼ªç•ªå·æ ¼ç´ãƒ¡ã‚½ãƒƒãƒ‰
+            // ’“—Ö”Ô†Ši”[ƒƒ\ƒbƒh
             SetCycleNumber(input, ref isBooleanFlg);
-            // æœ¬æ—¥ã®é§è¼ªç•ªå·ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹
+            // –{“ú‚Ì’“—Ö”Ô†‚ÌƒeƒLƒXƒg‚ğ•\¦‚·‚é
             SetTodayCycleNumberChangeText();
-            // ç¢ºå®šãƒ»å¤‰æ›´ãƒœã‚¿ãƒ³ã®ãƒ•ãƒ©ã‚°ã®çŠ¶æ…‹ã‚’å¤‰ãˆã‚‹
+            // Šm’èE•ÏXƒ{ƒ^ƒ“‚Ìƒtƒ‰ƒO‚Ìó‘Ô‚ğ•Ï‚¦‚é
             SetTransformButton();
         }
 
         /// <summary>
-        /// é§è¼ªç•ªå·ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+        /// ’“—Ö”Ô†‚ğŠi”[‚·‚éƒƒ\ƒbƒh
         /// </summary>
         private void SetCycleNumber(String input, ref Boolean isBooleanFlg)
         {
 
             try
             {
-                // å…¥åŠ›ã•ã‚ŒãŸå€¤ã‚’æ•°å€¤ã«å¤‰æ›
+                // “ü—Í‚³‚ê‚½’l‚ğ”’l‚É•ÏŠ·
                 int intputInt = int.Parse(input);
 
-                // å…¥åŠ›ã•ã‚ŒãŸå€¤ãŒé§è¼ªå ´æœ€çµ‚ç•ªå·ã‚ˆã‚Šå¤§ãããªã„ã‹ç¢ºèª
+                // “ü—Í‚³‚ê‚½’l‚ª’“—ÖêÅI”Ô†‚æ‚è‘å‚«‚­‚È‚¢‚©Šm”F
                 if (intputInt <= lastCycleNumber)
                 {
-                    // çµæœã‚’é§è¼ªç•ªå·ã«æ ¼ç´
+                    // Œ‹‰Ê‚ğ’“—Ö”Ô†‚ÉŠi”[
                     cycleNumber = intputInt;
 
-                    // commonã®é§è¼ªç•ªå·ã«ã‚‚æ ¼ç´
+                    // common‚Ì’“—Ö”Ô†‚É‚àŠi”[
                     Common.CycleNumber = intputInt;
 
-                    // ç¢ºå®šãƒœã‚¿ãƒ³ãƒ•ãƒ©ã‚°ã‹å¤‰æ›´ãƒ•ãƒ©ã‚°ã‚’true
+                    // Šm’èƒ{ƒ^ƒ“ƒtƒ‰ƒO‚©•ÏXƒtƒ‰ƒO‚ğtrue
                     isBooleanFlg = true;
                 }
                 else
                 {
-                    // ã‚¨ãƒ©ãƒ¼ã®å ´åˆã¯å‡ºå‹¤ãƒ»å¤‰æ›´ãƒ•ãƒ©ã‚°ã‚’false
+                    // ƒGƒ‰[‚Ìê‡‚Ío‹ÎE•ÏXƒtƒ‰ƒO‚ğfalse
                     isBooleanFlg = false;
 
-                    // å…¥åŠ›ã•ã‚ŒãŸå€¤ãŒé§è¼ªå ´æœ€çµ‚ç•ªå·ã‚ˆã‚Šå¤§ãã„å ´åˆ
+                    // “ü—Í‚³‚ê‚½’l‚ª’“—ÖêÅI”Ô†‚æ‚è‘å‚«‚¢ê‡
                     throw new OverflowException();
                 }
 
             }
             catch (OverflowException)
             {
-                // ã‚¨ãƒ©ãƒ¼ã®å ´åˆã¯å‡ºå‹¤ãƒ»å¤‰æ›´ãƒ•ãƒ©ã‚°ã‚’false
+                // ƒGƒ‰[‚Ìê‡‚Ío‹ÎE•ÏXƒtƒ‰ƒO‚ğfalse
                 isBooleanFlg = false;
 
-                MessageBox.Show($"å…¥åŠ›ã•ã‚ŒãŸæ•°å€¤ãŒå¤§ãã™ãã¾ã™ã€‚ " + lastCycleNumber + " ç•ªã¾ã§å…¥åŠ›ã§ãã¾ã™ã€‚",
-                    "ã‚¨ãƒ©ãƒ¼", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"“ü—Í‚³‚ê‚½”’l‚ª‘å‚«‚·‚¬‚Ü‚·B " + lastCycleNumber + " ”Ô‚Ü‚Å“ü—Í‚Å‚«‚Ü‚·B",
+                    "ƒGƒ‰[", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (FormatException ex)
             {
-                // ã‚¨ãƒ©ãƒ¼ã®å ´åˆã¯å‡ºå‹¤ãƒ»å¤‰æ›´ãƒ•ãƒ©ã‚°ã‚’false
+                // ƒGƒ‰[‚Ìê‡‚Ío‹ÎE•ÏXƒtƒ‰ƒO‚ğfalse
                 isBooleanFlg = false;
 
-                MessageBox.Show($"å…¥åŠ›ã•ã‚ŒãŸæ–‡å­—åˆ—ãŒæ•°å€¤ã«å¤‰æ›ã§ãã¾ã›ã‚“ã€‚\nã‚¨ãƒ©ãƒ¼å†…å®¹: " + ex.Message,
-                    "ã‚¨ãƒ©ãƒ¼", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"“ü—Í‚³‚ê‚½•¶š—ñ‚ª”’l‚É•ÏŠ·‚Å‚«‚Ü‚¹‚ñB\nƒGƒ‰[“à—e: " + ex.Message,
+                    "ƒGƒ‰[", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                // ã‚¨ãƒ©ãƒ¼ã®å ´åˆã¯å‡ºå‹¤ãƒ»å¤‰æ›´ãƒ•ãƒ©ã‚°ã‚’false
+                // ƒGƒ‰[‚Ìê‡‚Ío‹ÎE•ÏXƒtƒ‰ƒO‚ğfalse
                 isBooleanFlg = false;
 
-                // ãã®ä»–ã®äºˆæœŸã—ãªã„ã‚¨ãƒ©ãƒ¼
-                MessageBox.Show($"äºˆæœŸã—ãªã„ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚\nã‚¨ãƒ©ãƒ¼å†…å®¹: " + ex.Message,
-                    "ã‚¨ãƒ©ãƒ¼", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // ‚»‚Ì‘¼‚Ì—\Šú‚µ‚È‚¢ƒGƒ‰[
+                MessageBox.Show($"—\Šú‚µ‚È‚¢ƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½B\nƒGƒ‰[“à—e: " + ex.Message,
+                    "ƒGƒ‰[", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// ç¾åœ¨ã®é§è¼ªç•ªå·ã‚’ç”»é¢ã«è¡¨ç¤ºã™ã‚‹(å‡ºå‹¤æ™‚ã¨é€€å‹¤æ™‚ã§ä½¿ç”¨)
+        /// Œ»İ‚Ì’“—Ö”Ô†‚ğ‰æ–Ê‚É•\¦‚·‚é(o‹Î‚Æ‘Ş‹Î‚Åg—p)
         /// </summary>
         private void SetTodayCycleNumberChangeText()
         {
-            // å‡ºå‹¤ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚Œã¦ã„ã‚‹æ™‚
+            // o‹Îƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚Ä‚¢‚é
             if (isCheckStartingButtonFlg == true && isCheckFinishingButtonFlg == false)
             {
-                // ä»Šæ—¥ã®é§è¼ªç•ªå·ã‚’ãƒ©ãƒ™ãƒ«ã«è¡¨ç¤ºã™ã‚‹
-                TodayCycleNumberLabel.Text = "æœ¬æ—¥ã®é§è¼ªå ´ç•ªå·ã¯ " + cycleNumber + " ç•ªã§ã™ã€‚";
+                // ¡“ú‚Ì’“—Ö”Ô†‚ğƒ‰ƒxƒ‹‚É•\¦‚·‚é
+                TodayCycleNumberLabel.Text = "–{“ú‚Ì’“—Öê”Ô†‚Í " + cycleNumber + " ”Ô‚Å‚·B";
             }
-            // é€€å‹¤ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚Œã¦ã„ã‚‹æ™‚
+            // ‘Ş‹Îƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚Ä‚¢‚é
             else if (isCheckFinishingButtonFlg == true)
             {
-                // é€€å‹¤ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å¤‰ãˆã‚‹
-                TodayCycleNumberLabel.Text = "æœ¬æ—¥ã‚‚ãŠç–²ã‚Œæ§˜ã§ã™ã€‚";
+                // ‘Ş‹Îƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚Ä‚¢‚éê‡‚ÍƒƒbƒZ[ƒW‚ğ•Ï‚¦‚é
+                TodayCycleNumberLabel.Text = "–{“ú‚à‚¨”æ‚ê—l‚Å‚·B";
             }
             else
             {
-                // ã©ã¡ã‚‰ã‚‚æŠ¼ã•ã‚Œã¦ã„ãªã„å ´åˆ
-                TodayCycleNumberLabel.Text = "å‡ºå‹¤ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ãã ã•ã„ã€‚";
+                // ‚Ç‚¿‚ç‚à‰Ÿ‚³‚ê‚Ä‚¢‚È‚¢ê‡
+                TodayCycleNumberLabel.Text = "o‹Îƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B";
             }
         }
 
         /// <summary>
-        /// ç¢ºå®šãƒ»å¤‰æ›´ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚ã®æ´»æ€§åŒ–å‡¦ç†
+        /// Šm’èE•ÏXƒ{ƒ^ƒ“‰Ÿ‰º‚ÌŠˆ«‰»ˆ—
         /// </summary>
         private void SetTransformButton()
         {
-            // ç¢ºå®šãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
+            // Šm’èƒ{ƒ^ƒ“‰Ÿ‰º
             if (isCheckExcecuteFlg == true)
             {
-                // ç¢ºå®šãƒœã‚¿ãƒ³ã‚’éæ´»æ€§åŒ–
+                // Šm’èƒ{ƒ^ƒ“‚ğ”ñŠˆ«‰»
                 ExecuteButton.Enabled = false;
             }
         }
 
         /// <summary>
-        /// å¤‰æ›´ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚å‡¦ç†
+        /// •ÏXƒ{ƒ^ƒ“‰Ÿ‰ºˆ—
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -456,71 +456,71 @@ namespace CycleNumberManageTool
         {
             try
             {
-                // ç¢ºå®šãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã¦ã„ã‚‹ã‹ã¤ã€ç¢ºå®šãƒœã‚¿ãƒ³ãŒæŠ¼ä¸‹ã•ã‚Œã¦ã„ãªã„ã‹ç¢ºèª
+                // Šm’èƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚Ä‚¢‚é‚©‚ÂAŠm’èƒ{ƒ^ƒ“‚ª‰Ÿ‰º‚³‚ê‚Ä‚¢‚È‚¢‚©Šm”F
                 if (isCheckExcecuteFlg       == true && 
                     isCheckStartingButtonFlg != true)
                 {
-                    // é§è¼ªç•ªå·ã‚’æ ¼ç´
+                    // ’“—Ö”Ô†‚ğŠi”[
                     String input = InputCycleNumberText.Text;
 
-                    // ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤º
+                    // ƒ_ƒCƒAƒƒO‚ğ•\¦
                     DialogResult result = MessageBox.Show
                     (
-                        "é§è¼ªç•ªå·ã‚’ " + input + " ç•ªã«å¤‰æ›´ã—ã¾ã™ã‹ï¼Ÿ",
-                        "ç¢ºèª",
+                        "’“—Ö”Ô†‚ğ " + input + " ”Ô‚É•ÏX‚µ‚Ü‚·‚©H",
+                        "Šm”F",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question
                     );
 
-                    // ã¯ã„ã‚’é¸æŠã—ãŸå ´åˆ
+                    // ‚Í‚¢‚ğ‘I‘ğ‚µ‚½ê‡
                     if (result == DialogResult.Yes)
                     {
-                        // é§è¼ªç•ªå·ã‚’æ ¼ç´ã™ã‚‹ã¾ã§ã®ä¸€é€£ã®æ“ä½œ
+                        // ’“—Ö”Ô†‚ğŠi”[‚·‚é‚Ü‚Å‚Ìˆê˜A‚Ì‘€ì
                         SetCycleNumberKeisan(input, ref isCheckHenkoFlg);
 
-                        // æ­£ã—ãå¤‰æ›´å‡¦ç†ã§ããŸå ´åˆ
+                        // ³‚µ‚­•ÏXˆ—‚Å‚«‚½ê‡
                         if (isCheckHenkoFlg == true)
                         {
-                            MessageBox.Show("é§è¼ªç•ªå·ã‚’ " + cycleNumber + " ç•ªã«å¤‰æ›´ã—ã¾ã—ãŸã€‚", "å¤‰æ›´å®Œäº†",
+                            MessageBox.Show("’“—Ö”Ô†‚ğ " + cycleNumber + " ”Ô‚É•ÏX‚µ‚Ü‚µ‚½B", "•ÏXŠ®—¹",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
                         }
 
                     }
-                    // ã„ã„ãˆã‚’é¸æŠã—ãŸå ´åˆ
+                    // ‚¢‚¢‚¦‚ğ‘I‘ğ‚µ‚½ê‡
                     else if (result == DialogResult.No)
                     {
-                        MessageBox.Show(" æ“ä½œãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚Œã¾ã—ãŸã€‚", "æ“ä½œå–ã‚Šæ¶ˆã—",
+                        MessageBox.Show(" ‘€ì‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚Ü‚µ‚½B", "‘€ìæ‚èÁ‚µ",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                     }
                 }
-                // å‡ºå‹¤ãƒœã‚¿ãƒ³ãŒæŠ¼ä¸‹ã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€å¤‰æ›´ã§ããªã„
+                // o‹Îƒ{ƒ^ƒ“‚ª‰Ÿ‰º‚³‚ê‚Ä‚¢‚éê‡‚ÍA•ÏX‚Å‚«‚È‚¢
                 else if (isCheckStartingButtonFlg == true)
                 {
-                    MessageBox.Show($"å‡ºå‹¤ãƒœã‚¿ãƒ³ãŒæŠ¼ä¸‹ã•ã‚ŒãŸç‚ºã€é§è¼ªç•ªå·ã‚’å¤‰æ›´ã™ã‚‹ã“ã¨ãŒã§ãã¾ã›ã‚“ã€‚",
-                    "ã‚¨ãƒ©ãƒ¼", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"o‹Îƒ{ƒ^ƒ“‚ª‰Ÿ‰º‚³‚ê‚½ˆ×A’“—Ö”Ô†‚ğ•ÏX‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñB",
+                    "ƒGƒ‰[", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                // ç¢ºå®šãƒœã‚¿ãƒ³æŠ¼ä¸‹ã—ã¦ã„ãªã„å ´åˆ
+                // Šm’èƒ{ƒ^ƒ“‰Ÿ‰º‚µ‚Ä‚¢‚È‚¢ê‡
                 else
                 {
-                    MessageBox.Show($"æœ€åˆã«ç¢ºå®šãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ä¸‹ã•ã„ã€‚",
-                   "ã‚¨ãƒ©ãƒ¼", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Å‰‚ÉŠm’èƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‰º‚³‚¢B",
+                   "ƒGƒ‰[", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
             catch (Exception ex)
             {
-                // ãƒ¦ãƒ¼ã‚¶ãƒ¼å‘ã‘ã®ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤º
-                MessageBox.Show("ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ\nã‚¨ãƒ©ãƒ¼å†…å®¹:" + ex.Message,
-                    "ã‚¨ãƒ©ãƒ¼", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                MessageBox.Show("ç›´å‰ã«å¤‰æ›´ã—ãŸ " + cycleNumber + " ç•ªãŒæ ¼ç´ã•ã‚Œã¦ã„ã¾ã™ã€‚");
+                // ƒ†[ƒU[Œü‚¯‚ÌƒGƒ‰[ƒƒbƒZ[ƒW‚ğ•\¦
+                MessageBox.Show("ƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½\nƒGƒ‰[“à—e:" + ex.Message,
+                    "ƒGƒ‰[", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("’¼‘O‚É•ÏX‚µ‚½ " + cycleNumber + " ”Ô‚ªŠi”[‚³‚ê‚Ä‚¢‚Ü‚·B");
             }
         }
 
         /// <summary>
-        /// å‡ºå‹¤ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚å‡¦ç†
+        /// o‹Îƒ{ƒ^ƒ“‰Ÿ‰ºˆ—
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -528,29 +528,29 @@ namespace CycleNumberManageTool
         {
             try
             {
-                // ç¢ºå®šãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦é§è¼ªç•ªå·ãŒæ ¼ç´ã•ã‚Œã¦ã„ã‚‹å ´åˆ
+                // Šm’èƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä’“—Ö”Ô†‚ªŠi”[‚³‚ê‚Ä‚¢‚éê‡
                 if (isCheckExcecuteFlg        == true && 
                     InputCycleNumberText.Text == cycleNumber.ToString())
                 {
-                    // å‡ºå‹¤ãƒœã‚¿ãƒ³ã‚’true
+                    // o‹Îƒ{ƒ^ƒ“‚ğtrue
                     isCheckStartingButtonFlg = true;
 
-                    // é€€å‹¤ãƒœã‚¿ãƒ³ã‚’false
+                    // ‘Ş‹Îƒ{ƒ^ƒ“‚ğfalse
                     isCheckFinishingButtonFlg = false;
 
-                    // å‡ºå‹¤ãƒ»é€€å‹¤ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚ã®å‡¦ç†
+                    // o‹ÎE‘Ş‹Îƒ{ƒ^ƒ“‰Ÿ‰º‚Ìˆ—
                     SetWorkButton();
 
-                    // ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›
+                    // ƒRƒ}ƒ“ƒh“ü—Í
                     string syutokuCmd = @"
                     INSERT INTO dbo.RecordsCycleNumber 
                     (UserId, UserName, CycleNumber, WorkDate, CheckInTime, IsCheckedOut)
                     VALUES (@UserId, @UserName, @CycleNumber, CONVERT(date, GETDATE()), GETDATE(), 0)";
 
-                    // DBæ¥ç¶šã€é§è¼ªç•ªå·ã‚’ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ†ãƒ¼ãƒ–ãƒ«ã«æ ¼ç´ã™ã‚‹
+                    // DBÚ‘±A’“—Ö”Ô†‚ğƒŒƒR[ƒhƒe[ƒuƒ‹‚ÉŠi”[‚·‚é
                     SetPublicCycleNumberAndDBConnect(syutokuCmd, 1);
 
-                    // é§è¼ªç•ªå·ã‚’æ ¼ç´ã—ã¦ã„ã‚‹å ´åˆã€ãƒ†ã‚­ã‚¹ãƒˆã«è¡¨ç¤º
+                    // ’“—Ö”Ô†‚ğŠi”[‚µ‚Ä‚¢‚éê‡AƒeƒLƒXƒg‚É•\¦
                     String cmdText = @"
                     SELECT TOP 1
                         CycleNumber,
@@ -563,53 +563,53 @@ namespace CycleNumberManageTool
                     ORDER BY CheckInTime DESC;
                 ";
 
-                    // ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ä½œæˆ
+                    // ƒCƒ“ƒXƒ^ƒ“ƒXì¬
                     Common commonInstance = new Common();
 
-                    // åˆ¤å®šç”¨å¤‰æ•°
+                    // ”»’è—p•Ï”
                     object[] result = commonInstance.IsSelectResult(cmdText);
 
-                    // æœ¬æ—¥ã€é§è¼ªç•ªå·ã‚’æ ¼ç´ã—ãŸå ´åˆ
+                    // –{“úA’“—Ö”Ô†‚ğŠi”[‚µ‚½ê‡
                     if (result != null && result[0] != DBNull.Value)
                     {
-                        // ä»Šæ—¥ã®é§è¼ªå ´ã‚’åˆ©ç”¨ã—å§‹ã‚ãŸæ™‚é–“ã‚’æ ¼ç´
+                        // ¡“ú‚Ì’“—Öê‚ğ—˜—p‚µn‚ß‚½ŠÔ‚ğŠi”[
                         startTime = (DateTime)result[1];
                     }
                     else
                     {
-                        MessageBox.Show($"é§è¼ªå ´ã«æ ¼ç´ã—ãŸæ™‚é–“ã®å–å¾—ã«å¤±æ•—ã—ã¾ã—ãŸã€‚",
-                        "ã‚¨ãƒ©ãƒ¼", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"’“—Öê‚ÉŠi”[‚µ‚½ŠÔ‚Ìæ“¾‚É¸”s‚µ‚Ü‚µ‚½B",
+                        "ƒGƒ‰[", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                        // ç¾åœ¨ã®æ™‚åˆ»ã‚’æ ¼ç´
+                        // Œ»İ‚Ì‚ğŠi”[
                         startTime = DateTime.Now;
                     }
 
                 }
-                // ç¢ºå®šãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ã„ã‚‹ã‹ã¤ã€æ ¼ç´ã•ã‚Œã¦ã„ã‚‹é§è¼ªç•ªå·ã¨ãƒ†ã‚­ã‚¹ãƒˆã«è¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹é§è¼ªç•ªå·ãŒä¸€è‡´ã—ãªã„å ´åˆ
+                // Šm’èƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚¢‚é‚©‚ÂAŠi”[‚³‚ê‚Ä‚¢‚é’“—Ö”Ô†‚ÆƒeƒLƒXƒg‚É•\¦‚³‚ê‚Ä‚¢‚é’“—Ö”Ô†‚ªˆê’v‚µ‚È‚¢ê‡
                 else if (isCheckExcecuteFlg       == true && 
                         InputCycleNumberText.Text != cycleNumber.ToString())
                 {
-                    MessageBox.Show($"å…ƒã€…æ ¼ç´ã—ãŸé§è¼ªç•ªå·ã«æ­£ã—ãã™ã‚‹ã‹ã€é§è¼ªç•ªå·ã‚’å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚",
-                    "ã‚¨ãƒ©ãƒ¼", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Œ³XŠi”[‚µ‚½’“—Ö”Ô†‚É³‚µ‚­‚·‚é‚©A’“—Ö”Ô†‚ğ•ÏX‚µ‚Ä‚­‚¾‚³‚¢B",
+                    "ƒGƒ‰[", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                // ç¢ºå®šãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ã„ãªã„å ´åˆ
+                // Šm’èƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚¢‚È‚¢ê‡
                 else
                 {
-                    MessageBox.Show($"å…ˆã«é§è¼ªç•ªå·ã‚’å…¥åŠ›ã—ã¦ç¢ºå®šãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ãã ã•ã„ã€‚",
-                    "ã‚¨ãƒ©ãƒ¼", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"æ‚É’“—Ö”Ô†‚ğ“ü—Í‚µ‚ÄŠm’èƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B",
+                    "ƒGƒ‰[", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
             catch (Exception ex)
             {
-                // ãƒ¦ãƒ¼ã‚¶ãƒ¼å‘ã‘ã®ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤º
-                MessageBox.Show("ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ\nã‚¨ãƒ©ãƒ¼å†…å®¹:" + ex.Message,
-                    "ã‚¨ãƒ©ãƒ¼", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // ƒ†[ƒU[Œü‚¯‚ÌƒGƒ‰[ƒƒbƒZ[ƒW‚ğ•\¦
+                MessageBox.Show("ƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½\nƒGƒ‰[“à—e:" + ex.Message,
+                    "ƒGƒ‰[", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// é€€å‹¤ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚å‡¦ç†
+        /// ‘Ş‹Îƒ{ƒ^ƒ“‰Ÿ‰ºˆ—
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -617,22 +617,22 @@ namespace CycleNumberManageTool
         {
             try
             {
-                // å‡ºå‹¤ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ã„ã‚‹ã‹ç¢ºèª
+                // o‹Îƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚¢‚é‚©Šm”F
                 if (isCheckStartingButtonFlg == true)
                 {
-                    // é€€å‹¤ãƒœã‚¿ãƒ³ã‚’true
+                    // ‘Ş‹Îƒ{ƒ^ƒ“‚ğtrue
                     isCheckFinishingButtonFlg = true;
 
-                    // å‡ºå‹¤ãƒœã‚¿ãƒ³ã‚’false
+                    // o‹Îƒ{ƒ^ƒ“‚ğfalse
                     isCheckStartingButtonFlg = false;
 
-                    // é§è¼ªç•ªå·ã‚’æ ¼ç´ã™ã‚‹ãƒ†ã‚­ã‚¹ãƒˆã‚’ç©ºç™½ã«ã™ã‚‹(å€‹äººçš„ã«æ°—ã«ãªã‚‹ç‚º)
+                    // ’“—Ö”Ô†‚ğŠi”[‚·‚éƒeƒLƒXƒg‚ğ‹ó”’‚É‚·‚é(ŒÂl“I‚É‹C‚É‚È‚éˆ×)
                     InputCycleNumberText.Text = "";
 
-                    // å‡ºå‹¤ãƒ»é€€å‹¤ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚ã®å‡¦ç†
+                    // o‹ÎE‘Ş‹Îƒ{ƒ^ƒ“‰Ÿ‰º‚Ìˆ—
                     SetWorkButton();
 
-                    // ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›
+                    // ƒRƒ}ƒ“ƒh“ü—Í
                     string syutokuCmd = @"
                         UPDATE RecordsCycleNumber
                         SET CheckOutTime = @CheckOutTime
@@ -641,123 +641,123 @@ namespace CycleNumberManageTool
                           AND CAST(WorkDate AS date) = CAST(@Today AS date);
                     ";
 
-                    // DBæ¥ç¶šã€é§è¼ªç•ªå·ã‚’ãƒ¬ã‚³ãƒ¼ãƒ‰ãƒ†ãƒ¼ãƒ–ãƒ«ã«æ ¼ç´ã™ã‚‹
+                    // DBÚ‘±A’“—Ö”Ô†‚ğƒŒƒR[ƒhƒe[ƒuƒ‹‚ÉŠi”[‚·‚é
                     SetPublicCycleNumberAndDBConnect(syutokuCmd, 2);
                 }
-                // å‡ºå‹¤ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ã„ãªã„å ´åˆ
+                // o‹Îƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚¢‚È‚¢ê‡
                 else
                 {
-                    MessageBox.Show($"å‡ºå‹¤ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚Œã¦ã„ãªã„ç‚ºå‡ºå‹¤ã§ãã¾ã›ã‚“ã€‚",
-                    "ã‚¨ãƒ©ãƒ¼", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"o‹Îƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚Ä‚¢‚È‚¢ˆ×o‹Î‚Å‚«‚Ü‚¹‚ñB",
+                    "ƒGƒ‰[", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
             catch (Exception ex)
             {
-                // ãƒ¦ãƒ¼ã‚¶ãƒ¼å‘ã‘ã®ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤º
-                MessageBox.Show("ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ\nã‚¨ãƒ©ãƒ¼å†…å®¹:" + ex.Message,
-                    "ã‚¨ãƒ©ãƒ¼", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // ƒ†[ƒU[Œü‚¯‚ÌƒGƒ‰[ƒƒbƒZ[ƒW‚ğ•\¦
+                MessageBox.Show("ƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½\nƒGƒ‰[“à—e:" + ex.Message,
+                    "ƒGƒ‰[", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// å‡ºå‹¤ãƒ»é€€å‹¤ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚ã®ã²ã¨ã¾ã¨ã¾ã‚Šå‡¦ç†
+        /// o‹ÎE‘Ş‹Îƒ{ƒ^ƒ“‰Ÿ‰º‚Ì‚Ğ‚Æ‚Ü‚Æ‚Ü‚èˆ—
         /// </summary>
         private void SetWorkButton()
         {
-            // å‡ºå‹¤ãƒ»é€€å‹¤ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚ã®ãã‚Œãã‚Œã®ãƒ†ã‚­ã‚¹ãƒˆãƒã‚§ãƒ³ã‚¸ãªã©
+            // o‹ÎE‘Ş‹Îƒ{ƒ^ƒ“‰Ÿ‰º‚Ì‚»‚ê‚¼‚ê‚ÌƒeƒLƒXƒgƒ`ƒFƒ“ƒW‚È‚Ç
             SetWorkChangeText();
 
-            // å‡ºå‹¤çŠ¶æ³ã‚’ãƒ©ãƒ™ãƒ«ã«è¡¨ç¤ºã™ã‚‹
+            // o‹Îó‹µ‚ğƒ‰ƒxƒ‹‚É•\¦‚·‚é
             SetWorkIsNow();
 
-            // ç¾åœ¨ã®é§è¼ªç•ªå·ã‚’ç”»é¢ã«è¡¨ç¤ºã™ã‚‹(å‡ºå‹¤æ™‚ã¨é€€å‹¤æ™‚ã§ä½¿ç”¨)
+            // Œ»İ‚Ì’“—Ö”Ô†‚ğ‰æ–Ê‚É•\¦‚·‚é(o‹Î‚Æ‘Ş‹Î‚Åg—p)
             SetTodayCycleNumberChangeText();
         }
 
         /// <summary>
-        /// å‡ºå‹¤ãƒ»é€€å‹¤ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚ã®ãã‚Œãã‚Œã®ãƒ†ã‚­ã‚¹ãƒˆãƒã‚§ãƒ³ã‚¸ãªã©
+        /// o‹ÎE‘Ş‹Îƒ{ƒ^ƒ“‰Ÿ‰º‚Ì‚»‚ê‚¼‚ê‚ÌƒeƒLƒXƒgƒ`ƒFƒ“ƒW‚È‚Ç
         /// </summary>
         private void SetWorkChangeText()
         {
-            // å‡ºå‹¤ãƒœã‚¿ãƒ³ãŒæŠ¼ä¸‹ã•ã‚ŒãŸå ´åˆ
+            // o‹Îƒ{ƒ^ƒ“‚ª‰Ÿ‰º‚³‚ê‚½ê‡
             if (isCheckStartingButtonFlg == true && isCheckFinishingButtonFlg == false)
             {
-                // å‡ºå‹¤ãƒœã‚¿ãƒ³ã‚’éæ´»æ€§
+                // o‹Îƒ{ƒ^ƒ“‚ğ”ñŠˆ«
                 StartingWorkButton.Enabled = false;
 
-                // é§è¼ªç•ªå·ã‚’å¤‰æ›´ã§ããªã„ã‚ˆã†ã«ã™ã‚‹ã€‚
+                // ’“—Ö”Ô†‚ğ•ÏX‚Å‚«‚È‚¢‚æ‚¤‚É‚·‚éB
                 InputCycleNumberText.Enabled = false;
 
-                // ä»Šã®é§è¼ªé‡‘é¡ã‚’è¡¨ç¤º
-                CurrentMoneyLabel.Text = "ç¾åœ¨ã®é§è¼ªé‡‘é¡ã¯ " + currentPaymentMoney + " å††ã§ã™ã€‚";
+                // ¡‚Ì’“—Ö‹àŠz‚ğ•\¦
+                CurrentMoneyLabel.Text = "Œ»İ‚Ì’“—Ö‹àŠz‚Í " + currentPaymentMoney + " ‰~‚Å‚·B";
 
-                // å‡ºå‹¤ã—ãŸæ—¨ã‚’ãƒ¦ãƒ¼ã‚¶ã«çŸ¥ã‚‰ã›ã‚‹
-                MessageBox.Show(" å‡ºå‹¤ã—ã¾ã—ãŸã€‚", "å‡ºå‹¤ãƒœã‚¿ãƒ³æŠ¼ä¸‹",
+                // o‹Î‚µ‚½|‚ğƒ†[ƒU‚É’m‚ç‚¹‚é
+                MessageBox.Show(" o‹Î‚µ‚Ü‚µ‚½B", "o‹Îƒ{ƒ^ƒ“‰Ÿ‰º",
                            MessageBoxButtons.OK,
                            MessageBoxIcon.Information);
 
             }
-            // é€€å‹¤ãƒœã‚¿ãƒ³ãŒæŠ¼ä¸‹ã•ã‚ŒãŸå ´åˆ
+            // ‘Ş‹Îƒ{ƒ^ƒ“‚ª‰Ÿ‰º‚³‚ê‚½ê‡
             else if (isCheckFinishingButtonFlg == true)
             {
-                // å‡ºå‹¤ãƒœã‚¿ãƒ³ã‚’æ´»æ€§åŒ–
+                // o‹Îƒ{ƒ^ƒ“‚ğŠˆ«‰»
                 StartingWorkButton.Enabled = true;
 
-                // é§è¼ªç•ªå·ã‚’å¤‰æ›´ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹ã€‚
+                // ’“—Ö”Ô†‚ğ•ÏX‚Å‚«‚é‚æ‚¤‚É‚·‚éB
                 InputCycleNumberText.Enabled = true;
 
-                // ç¢ºå®šãƒœã‚¿ãƒ³æ´»æ€§ã®å¤‰æ›´ãƒœã‚¿ãƒ³éæ´»æ€§
+                // Šm’èƒ{ƒ^ƒ“Šˆ«‚Ì•ÏXƒ{ƒ^ƒ“”ñŠˆ«
                 ExecuteButton.Enabled = true;
 
-                // ç¢ºå®šãƒœã‚¿ãƒ³ãƒ•ãƒ©ã‚°ã‚’éæ´»æ€§
+                // Šm’èƒ{ƒ^ƒ“ƒtƒ‰ƒO‚ğ”ñŠˆ«
                 isCheckExcecuteFlg = false;
 
-                // é€€å‹¤ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚ã«ç¾åœ¨ã®é§è¼ªé‡‘é¡ã‚’åˆæœŸåŒ–
+                // ‘Ş‹Îƒ{ƒ^ƒ“‰Ÿ‰º‚ÉŒ»İ‚Ì’“—Ö‹àŠz‚ğ‰Šú‰»
                 currentPaymentMoney = 100;
 
-                // ä»Šã®é§è¼ªé‡‘é¡ã‚’è¡¨ç¤º
-                CurrentMoneyLabel.Text = "ç¾åœ¨ã®é§è¼ªé‡‘é¡ã¯ " + 0 + " å††ã§ã™ã€‚";
+                // ¡‚Ì’“—Ö‹àŠz‚ğ•\¦
+                CurrentMoneyLabel.Text = "Œ»İ‚Ì’“—Ö‹àŠz‚Í " + 0 + " ‰~‚Å‚·B";
 
-                // é€€å‹¤ã—ãŸæ—¨ã‚’ãƒ¦ãƒ¼ã‚¶ã«çŸ¥ã‚‰ã›ã‚‹
-                MessageBox.Show(" æœ¬æ—¥ã‚‚ãŠç–²ã‚Œã•ã¾ã§ã—ãŸã€‚", "é€€å‹¤ãƒœã‚¿ãƒ³æŠ¼ä¸‹",
+                // ‘Ş‹Î‚µ‚½|‚ğƒ†[ƒU‚É’m‚ç‚¹‚é
+                MessageBox.Show(" –{“ú‚à‚¨”æ‚ê‚³‚Ü‚Å‚µ‚½B", "‘Ş‹Îƒ{ƒ^ƒ“‰Ÿ‰º",
                            MessageBoxButtons.OK,
                            MessageBoxIcon.Information);
             }
         }
 
         /// <summary>
-        /// DBæ¥ç¶šã¨é§è¼ªç•ªå·ï¼ˆCommonï¼‰ã‚’æ ¼ç´
-        /// insertOrUpdateFlgï¼š1=INSERT, 2=UPDATE, 3=DELETE
+        /// DBÚ‘±‚Æ’“—Ö”Ô†iCommonj‚ğŠi”[
+        /// insertOrUpdateFlgF1=INSERT, 2=UPDATE, 3=DELETE
         /// </summary>
         private void SetPublicCycleNumberAndDBConnect(string syutokuCmd, int insertOrUpdateFlg)
         {
             try
             {
-                // ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ä½œæˆ
+                // ƒCƒ“ƒXƒ^ƒ“ƒXì¬
                 Common commonInstance = new Common();
 
-                // è¿½åŠ ãƒ»æ›´æ–°ãŒæˆåŠŸã—ãŸã‹åˆ¤æ–­ã™ã‚‹ç‚ºã®å¤‰æ•°
+                // ’Ç‰ÁEXV‚ª¬Œ÷‚µ‚½‚©”»’f‚·‚éˆ×‚Ì•Ï”
                 bool insertOk = false;
                 bool updateOk = false;
 
                 if (insertOrUpdateFlg == 1)
                 {
-                    // ã‚¤ãƒ³ã‚µãƒ¼ãƒˆå®Ÿè¡Œï¼ˆé§è¼ªç•ªå·ã‚’DBã«æ ¼ç´ï¼‰
+                    // ƒCƒ“ƒT[ƒgÀsi’“—Ö”Ô†‚ğDB‚ÉŠi”[j
                     insertOk = commonInstance.ExecuteSql(1, 1, syutokuCmd, Common.UserID, Common.CycleUserName, "0");
                 }
                 else if (insertOrUpdateFlg == 2)
                 {
-                    // ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆå®Ÿè¡Œï¼ˆé€€å‹¤æ™‚åˆ»ã‚’DBã¸æ ¼ç´ï¼‰
+                    // ƒAƒbƒvƒf[ƒgÀsi‘Ş‹Î‚ğDB‚ÖŠi”[j
                     updateOk = commonInstance.ExecuteSql(2, 0, syutokuCmd, Common.UserID, Common.CycleUserName, "");
                 }
             }
 
             catch (Exception ex)
             {
-                // ãƒ¦ãƒ¼ã‚¶ãƒ¼å‘ã‘ã®ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤º
-                MessageBox.Show("ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ\nã‚¨ãƒ©ãƒ¼å†…å®¹:" + ex.Message,
-                    "ã‚¨ãƒ©ãƒ¼", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // ƒ†[ƒU[Œü‚¯‚ÌƒGƒ‰[ƒƒbƒZ[ƒW‚ğ•\¦
+                MessageBox.Show("ƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½\nƒGƒ‰[“à—e:" + ex.Message,
+                    "ƒGƒ‰[", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

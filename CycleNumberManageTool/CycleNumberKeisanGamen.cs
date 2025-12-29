@@ -1,3 +1,7 @@
+using System.Data;
+using System.Xml;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
 namespace CycleNumberManageTool
 {
     public partial class CycleNumberKeisanGamen : Form

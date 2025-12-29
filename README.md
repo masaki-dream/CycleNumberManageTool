@@ -59,7 +59,7 @@
 - Windows Forms
 - SQL Server
 - ADO.NET
-- Visual Studio 2026
+- Visual Studio 2022
 
 ---
 

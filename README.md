@@ -1,5 +1,8 @@
 # CycleNumberManageTool
 
+![CI](https://github.com/masaki-dream/CycleNumberManageTool/actions/workflows/dotnet-ci.yml/badge.svg)
+
+
 ## 概要
 地元の駐輪場における駐輪番号と利用時間を管理する
 **C#（Windows Forms）製のデスクトップアプリケーション**です。
@@ -60,6 +63,7 @@
 - SQL Server
 - ADO.NET
 - Visual Studio 2022
+- GitHub Actions（push 時に自動ビルド）
 
 ---
 

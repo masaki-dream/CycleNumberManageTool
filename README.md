@@ -4,6 +4,9 @@
 https://github.com/masaki-dream/CycleNumberManageTool/actions/workflows/dotnet-desktop.yml
 )
 
+> GitHub Actions による CI を導入し、push / pull request 時に  
+> ビルドが自動実行される構成としています。
+
 
 ## 概要
 地元の駐輪場における駐輪番号と利用時間を管理する

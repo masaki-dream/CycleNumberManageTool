@@ -1,7 +1,7 @@
 # CycleNumberManageTool
 
-[![CI](https://github.com/masaki-dream/CycleNumberManageTool/actions/workflows/dotnet-ci.yml/badge.svg)](
-https://github.com/masaki-dream/CycleNumberManageTool/actions/workflows/dotnet-ci.yml
+[![CI](https://github.com/masaki-dream/CycleNumberManageTool/actions/workflows/dotnet-desktop.yml/badge.svg)](
+https://github.com/masaki-dream/CycleNumberManageTool/actions/workflows/dotnet-desktop.yml
 )
 
 

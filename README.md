@@ -1,6 +1,8 @@
 # CycleNumberManageTool
 
-![CI](https://github.com/masaki-dream/CycleNumberManageTool/actions/workflows/dotnet-ci.yml/badge.svg)
+[![CI](https://github.com/masaki-dream/CycleNumberManageTool/actions/workflows/dotnet-ci.yml/badge.svg)](
+https://github.com/masaki-dream/CycleNumberManageTool/actions/workflows/dotnet-ci.yml
+)
 
 
 ## 概要
